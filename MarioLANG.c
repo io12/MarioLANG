@@ -30,7 +30,7 @@ int main(int argc, char* argv[]) {
 			break;
 	}
 	rewind(fp);
-	char** map = malloc(lines);
+	char** map = malloc(lines * sizeof(char*));
 	for (int i = 0; i < lines; ++i) {
 		map[i] = malloc(cols);
 		fgets(map[i], cols, fp);
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 			switch (map[j][i]) {
 				case '=': standing = true; --j; break;
 				case '|': walking = false; right ? --i : ++i; break;
-				case '#': standing = true; walking = false; 
+				case '#': standing = true; walking = false;
 					  {
 						  int e;
 						  bool success = false;
